@@ -1,5 +1,7 @@
 FROM python:3.9.1-slim-buster
 
+LABEL org.opencontainers.image.source https://github.com/nownabe/discord-tts
+
 RUN mkdir -p /app \
   && apt-get update \
   && apt-get install -y --no-install-recommends ffmpeg=7:4.1.6-1~deb10u1 \
