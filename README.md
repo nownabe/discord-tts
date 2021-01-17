@@ -13,3 +13,20 @@ docker run \
 ```
 
 https://github.com/users/nownabe/packages/container/package/discord-tts
+
+## Deploy to Google Kubernetes Engine
+
+```bash
+# Use your own GOOGLE_PROJECT_ID and DISCORD_BOT_TOKEN
+
+gcloud iam service-account create discord-tts --project ${GOOGLE_PROJECT_ID}
+gcloud iam service-accounts add-iam-policy-binding \
+  discord-tts@${GOOGLE_PROJECT_ID}.iam.gserviceaccount.com \
+  --role roles/iam.workloadIdentityUser \
+  --member "serviceAccount:${GOOGLE_PROJECT_ID}.svc.id.goog[discord-tts/discord-tts]" \
+  --project ${GOOGLE_PROJECT_ID}
+envsubst < k8s.yaml.tpl | kubectl apply -f -
+kubectl create secret generic discord-tts \
+  -n discord-tts \
+  --from-literal=DISCORD_BOT_TOKEN=${DISCORD_BOT_TOKEN}
+```
