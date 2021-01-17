@@ -25,8 +25,9 @@ gcloud iam service-accounts add-iam-policy-binding \
   --role roles/iam.workloadIdentityUser \
   --member "serviceAccount:${GOOGLE_PROJECT_ID}.svc.id.goog[discord-tts/discord-tts]" \
   --project ${GOOGLE_PROJECT_ID}
-envsubst < k8s.yaml.tpl | kubectl apply -f -
+kubectl create namespace discord-tts
 kubectl create secret generic discord-tts \
   -n discord-tts \
   --from-literal=DISCORD_BOT_TOKEN=${DISCORD_BOT_TOKEN}
+envsubst < k8s.yaml.tpl | kubectl apply -f -
 ```
