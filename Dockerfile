@@ -17,4 +17,4 @@ RUN pipenv install --deploy --system
 
 COPY . /app
 
-CMD ["pipenv", "run", "python", "main.py"]
+CMD ["python", "main.py"]
