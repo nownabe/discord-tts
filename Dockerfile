@@ -13,7 +13,7 @@ WORKDIR /app
 COPY Pipfile Pipfile
 COPY Pipfile.lock Pipfile.lock
 
-RUN pipenv install
+RUN pipenv install --deploy --system
 
 COPY . /app
 
