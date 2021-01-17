@@ -1,0 +1,10 @@
+credentials.json
+Dockerfile
+.dockerignore
+.envrc
+.git
+.gitignore
+LICENSE
+list_tts_voice.py
+.python-version
+README.md
