@@ -6,7 +6,7 @@ import discord
 from google.cloud import texttospeech
 
 class MessageClient(discord.Client):
-    def __init__(self, language_code, voice_name=None, command_prefix='!us'):
+    def __init__(self, language_code, voice_name=None, command_prefix='!tts'):
         super().__init__()
 
         self.command_prefix = command_prefix
@@ -84,7 +84,7 @@ class MessageClient(discord.Client):
 
 language_code = os.environ.get('TTS_LANGUAGE_CODE', 'en-US')
 voice_name = os.environ.get('TTS_VOICE_NAME', None)
-command_prefix = os.environ.get('COMMAND_PREFIX', '!us')
+command_prefix = os.environ.get('COMMAND_PREFIX', '!tts')
 
 client = MessageClient(language_code, voice_name, command_prefix)
 client.run(os.environ.get('DISCORD_BOT_TOKEN'))
