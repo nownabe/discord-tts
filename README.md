@@ -24,6 +24,13 @@ https://github.com/users/nownabe/packages/container/package/discord-tts
 * `TTS_VOICE_NAME` - (Default: `None`) You can choose voice type. See [Text-to-Speech reference](https://cloud.google.com/text-to-speech/docs/voices) to get voice options.
 
 
+## Bot Usage
+
+1. Connect to voice channel
+1. Type `!tts start` into text chat
+1. Type any messages in text chat
+
+
 ## Deploy to Google Kubernetes Engine
 
 ```bash
