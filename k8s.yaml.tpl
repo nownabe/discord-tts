@@ -29,7 +29,7 @@ spec:
       serviceAccountName: discord-tts
       containers:
         - name: discord-tts
-          image: ghcr.io/nownabe/discord-tts
+          image: ghcr.io/nownabe/discord-tts:1.0.0
           envFrom:
             - secretRef:
                 name: discord-tts
