@@ -19,6 +19,7 @@ https://github.com/users/nownabe/packages/container/package/discord-tts
 ## Environment Variables
 
 * `DISCORD_BOT_TOKEN` - (Required) Your Discord bot token.
+* `COMMAND_PREFIX` - (Default: `!us`) Prefix to command the bot.
 * `TTS_LANGUAGE_CODE` - (Default: `en-US`) Language code expressed as a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag.
 * `TTS_VOICE_NAME` - (Default: `None`) You can choose voice type. See [Text-to-Speech reference](https://cloud.google.com/text-to-speech/docs/voices) to get voice options.
 

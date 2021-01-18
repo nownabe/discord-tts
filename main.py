@@ -6,8 +6,10 @@ import discord
 from google.cloud import texttospeech
 
 class MessageClient(discord.Client):
-    def __init__(self, language_code, voice_name=None):
+    def __init__(self, language_code, voice_name=None, command_prefix='!us'):
         super().__init__()
+
+        self.command_prefix = command_prefix
 
         self.connecting_guilds = {}
         self.tts_client = texttospeech.TextToSpeechClient()
@@ -24,11 +26,13 @@ class MessageClient(discord.Client):
         print('Logged on as {0}!'.format(self.user))
 
     async def on_message(self, message):
-        if not message.content.startswith('!us'):
+        text = message.content
+
+        if not text.startswith(self.command_prefix):
             await self.speech(message)
-        elif message.content == "!us start" or message.content == '!us s':
+        elif text == f'{self.command_prefix} start' or text == f'{self.command_prefix} s':
             await self.start_speech(message)
-        elif message.content == "!us end" or message.content == '!us e':
+        elif text == f'{self.command_prefix} end' or text == f'{self.command_prefix} e':
             await self.finish_speech(message)
         else:
             await message.channel.send(f"{message.author.mention} Unknown command.")
@@ -80,6 +84,7 @@ class MessageClient(discord.Client):
 
 language_code = os.environ.get('TTS_LANGUAGE_CODE', 'en-US')
 voice_name = os.environ.get('TTS_VOICE_NAME', None)
+command_prefix = os.environ.get('COMMAND_PREFIX', '!us')
 
-client = MessageClient(language_code, voice_name)
+client = MessageClient(language_code, voice_name, command_prefix)
 client.run(os.environ.get('DISCORD_BOT_TOKEN'))
