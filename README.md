@@ -2,6 +2,7 @@
 
 Text-to-speech for Discord.
 
+
 ## Usage
 
 ```bash
@@ -13,6 +14,12 @@ docker run \
 ```
 
 https://github.com/users/nownabe/packages/container/package/discord-tts
+
+
+## Environment Variables
+
+* `DISCORD_BOT_TOKEN` - Your Discord bot token.
+
 
 ## Deploy to Google Kubernetes Engine
 
