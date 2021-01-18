@@ -33,6 +33,9 @@ spec:
           envFrom:
             - secretRef:
                 name: discord-tts
+          env:
+            - name: LANGUAGE_CODE
+              value: ja-JP
           resources:
             requests:
               memory: 512Mi

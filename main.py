@@ -6,13 +6,15 @@ import discord
 from google.cloud import texttospeech
 
 class MessageClient(discord.Client):
-    def __init__(self):
+    def __init__(self, language_code, voice_name=None):
         super().__init__()
 
         self.connecting_guilds = {}
         self.tts_client = texttospeech.TextToSpeechClient()
         self.voice = texttospeech.VoiceSelectionParams(
-            language_code="ja-JP", ssml_gender=texttospeech.SsmlVoiceGender.NEUTRAL
+            language_code=language_code,
+            name=voice_name,
+            ssml_gender=texttospeech.SsmlVoiceGender.NEUTRAL
         )
         self.audio_config = texttospeech.AudioConfig(
             audio_encoding=texttospeech.AudioEncoding.MP3
@@ -76,6 +78,8 @@ class MessageClient(discord.Client):
     def delete_tempfile_callback(self, filename):
         return lambda error: os.remove(filename)
 
+language_code = os.environ.get('TTS_LANGUAGE_CODE', 'en-US')
+voice_name = os.environ.get('TTS_VOICE_NAME', None)
 
-client = MessageClient()
+client = MessageClient(language_code, voice_name)
 client.run(os.environ.get('DISCORD_BOT_TOKEN'))
