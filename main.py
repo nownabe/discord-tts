@@ -11,7 +11,6 @@ class MessageClient(discord.Client):
 
         self.command_prefix = command_prefix
 
-        self.connecting_guilds = {}
         self.tts_client = texttospeech.TextToSpeechClient()
         self.voice = texttospeech.VoiceSelectionParams(
             language_code=language_code,
