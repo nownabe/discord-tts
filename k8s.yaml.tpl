@@ -34,7 +34,7 @@ spec:
             - secretRef:
                 name: discord-tts
           env:
-            - name: LANGUAGE_CODE
+            - name: TTS_LANGUAGE_CODE
               value: ja-JP
           resources:
             requests:
