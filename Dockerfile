@@ -6,6 +6,7 @@ RUN mkdir -p /app \
   && apt-get update \
   && apt-get install -y --no-install-recommends ffmpeg=7:4.1.9-0+deb10u1 \
   && pip install pipenv==2020.11.15 \
+  && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
