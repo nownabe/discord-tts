@@ -1,4 +1,4 @@
-FROM python:3.9.1-slim-buster
+FROM python:3.11.4-slim-buster
 
 LABEL org.opencontainers.image.source https://github.com/nownabe/discord-tts
 
