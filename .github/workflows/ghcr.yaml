@@ -18,7 +18,7 @@ jobs:
       - name: Set tag name
         id: tagName
         run: echo "::set-output name=tagName::${GITHUB_REF#refs/*/}"
-      - uses: docker/build-push-action@v2
+      - uses: docker/build-push-action@v5
         with:
           context: .
           push: true
